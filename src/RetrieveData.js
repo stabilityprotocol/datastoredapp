@@ -4,6 +4,7 @@ import { createDecipheriv } from "crypto-browserify";
 import { useNavigate } from "react-router-dom";
 import { contractABI } from "./contracts/contractABI";
 import logo from "./components/logo.jpg"; // Import the logo
+import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
 
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 const providerUrl = process.env.REACT_APP_PROVIDER_URL;
@@ -149,6 +150,17 @@ function RetrieveData({ secretKey: propSecretKey, id: propId }) {
           <pre>{renderDecryptedData(decryptedData)}</pre>
         </div>
       )}
+      <InfoBox>
+        To learn more about Stability, please visit{" "}
+        <a
+          href="https://stabilityprotocol.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Stability Protocol
+        </a>
+        .
+      </InfoBox>
     </div>
   );
 }

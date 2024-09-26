@@ -1,0 +1,40 @@
+.info-box {
+  position: fixed; /* Fix the position so it stays in the same place */
+  bottom: 20px; /* Distance from the top */
+  right: 20px; /* Distance from the right */
+  width: 350px; /* Adjust the width as needed */
+  background-color: #eef5fb; /* Soft blue background */
+  border-left: 4px solid #2e3351; /* Blue left border for emphasis */
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  color: #333;
+  z-index: 1000; /* Ensure the box is always on top */
+}
+
+/* Styling for paragraphs in the info-box */
+.info-box p {
+  margin: 0 0 10px; /* Add bottom margin for spacing between paragraphs */
+}
+
+/* Link Styling */
+.info-box a {
+  color: #007bff; /* Same blue as the border for consistency */
+  text-decoration: underline; /* Underline the link to make it obvious */
+  font-weight: bold; /* Make the link stand out */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.info-box a:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+/* Emphasize important parts of the message */
+.info-box strong {
+  font-weight: bold;
+}
+
+.info-box em {
+  font-style: italic;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import { randomBytes } from "crypto-browserify";
 import { useNavigate } from "react-router-dom"; // For navigation
 import logo from "./components/logo.jpg"; // Import the logo
+import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
 
 function GenerateSecret({ setSecretKey }) {
   const navigate = useNavigate(); // Use navigate hook for routing
@@ -31,6 +32,11 @@ function GenerateSecret({ setSecretKey }) {
       </p>
       <br />
       <button onClick={generateKey}>Generate Secret Key</button>
+      <InfoBox>
+        {" "}
+        Stability is a public blockchain without any cryptocurrency requirement,
+        unlocking blockchain technology for all.{" "}
+      </InfoBox>
     </div>
   );
 }

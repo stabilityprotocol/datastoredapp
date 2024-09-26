@@ -4,6 +4,7 @@ import { randomBytes, createCipheriv } from "crypto-browserify";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import { contractABI } from "./contracts/contractABI"; // Import the ABI from the new file
 import logo from "./components/logo.jpg"; // Import the logo
+import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
 
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS; // Get contract address
 const providerUrl = process.env.REACT_APP_PROVIDER_URL; // Get provider URL
@@ -115,6 +116,11 @@ function PublishData({ data: propData, secretKey: propSecretKey, setId }) {
       <button onClick={handlePublish} disabled={isPublishing}>
         {isPublishing ? `Publishing${".".repeat(dotCount)}` : "Publish Data"}
       </button>
+      <InfoBox>
+        {" "}
+        Stability can process <strong>15x</strong> the number of transactions as
+        Polygon - with a cheaper and predictable cost.{" "}
+      </InfoBox>
     </div>
   );
 }

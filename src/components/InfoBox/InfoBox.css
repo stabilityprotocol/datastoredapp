@@ -1,16 +1,17 @@
 .info-box {
   position: fixed; /* Fix the position so it stays in the same place */
-  bottom: 20px; /* Distance from the top */
+  top: 20px; /* Distance from the top */
   right: 20px; /* Distance from the right */
-  width: 350px; /* Adjust the width as needed */
+  width: 250px; /* Adjust the width as needed */
   background-color: #eef5fb; /* Soft blue background */
   border-left: 4px solid #2e3351; /* Blue left border for emphasis */
   padding: 15px;
   border-radius: 5px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  font-size: 18px;
+  line-height: 1.2;
   color: #333;
-  z-index: 1000; /* Ensure the box is always on top */
+  z-index: 0; /* Ensure the box is always on top */
+  text-align: center;
 }
 
 /* Styling for paragraphs in the info-box */

@@ -6,6 +6,7 @@ module.exports = function override(config) {
     buffer: require.resolve("buffer/"),
     stream: require.resolve("stream-browserify"),
     crypto: require.resolve("crypto-browserify"),
+    vm: require.resolve("vm-browserify"),
     process: require.resolve("process/browser"), // Add process polyfill
   };
 

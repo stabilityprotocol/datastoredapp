@@ -42,9 +42,9 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          REACT_APP_CONTRACT_ADDRESS: ${{ secrets.REACT_APP_CONTRACT_ADDRESS }}
-          REACT_APP_PROVIDER_URL: ${{ secrets.REACT_APP_PROVIDER_URL }}
-          REACT_APP_PRIVATE_KEY: ${{ secrets.REACT_APP_PRIVATE_KEY }}
+          REACT_APP_CONTRACT_ADDRESS: ${{ vars.REACT_APP_CONTRACT_ADDRESS }}
+          REACT_APP_PROVIDER_URL: ${{ vars.REACT_APP_PROVIDER_URL }}
+          REACT_APP_PRIVATE_KEY: ${{ vars.REACT_APP_PRIVATE_KEY }}
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact

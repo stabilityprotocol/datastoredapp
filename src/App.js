@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes, HashRouter } from "react-router-dom";
 import GenerateSecret from "./GenerateSecret";
 import InputData from "./InputData";
 import PublishData from "./PublishData";
@@ -11,7 +11,7 @@ function App() {
   const [id, setId] = useState(null); // Holds the blockchain ID after publishing
 
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route
           path="/"
@@ -32,7 +32,7 @@ function App() {
           element={<RetrieveData secretKey={secretKey} id={id} />}
         />
       </Routes>
-    </Router>
+    </HashRouter>
   );
 }
 

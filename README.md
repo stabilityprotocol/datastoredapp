@@ -74,10 +74,6 @@ npm run build
 
 The build will be output to the `build` folder, which you can deploy to any static hosting service.
 
-## Contributing
-
-Contributions are welcome! Please fork the repository, create a feature branch, and submit a pull request.
-
 ## License
 
 This project is licensed under the MIT License.

@@ -1,8 +1,8 @@
 import React from "react";
 import { randomBytes } from "crypto-browserify";
-import { useNavigate } from "react-router-dom"; // For navigation
-import logo from "./components/logo.jpg"; // Import the logo
-import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
+import { useNavigate } from "react-router-dom";
+import logo from "./components/logo.jpg";
+import InfoBox from "./components/InfoBox/InfoBox";
 
 function GenerateSecret({ setSecretKey }) {
   const navigate = useNavigate(); // Use navigate hook for routing

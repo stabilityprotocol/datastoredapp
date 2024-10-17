@@ -3,8 +3,8 @@ import { ethers } from "ethers";
 import { createDecipheriv } from "crypto-browserify";
 import { useNavigate } from "react-router-dom";
 import { contractABI } from "./contracts/contractABI";
-import logo from "./components/logo.jpg"; // Import the logo
-import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
+import logo from "./components/logo.jpg";
+import InfoBox from "./components/InfoBox/InfoBox";
 
 const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
 const providerUrl = process.env.REACT_APP_PROVIDER_URL;
@@ -26,7 +26,6 @@ async function retrieveDataFromBlockchain(id, secretKey) {
 
     // Fetch the encrypted data from blockchain
     const encryptedData = await contract.getTransaction(id);
-    console.log("Encrypted Data:", encryptedData);
 
     // Decrypt the data
     const iv = encryptedData.slice(0, 32);

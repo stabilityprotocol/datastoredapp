@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import logo from "./components/logo.jpg"; // Import the logo
-import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
+import { useNavigate } from "react-router-dom";
+import logo from "./components/logo.jpg";
+import InfoBox from "./components/InfoBox/InfoBox";
 
 function InputData({ secretKey: propSecretKey, setData }) {
   const [keyValuePairs, setKeyValuePairs] = useState([{ key: "", value: "" }]); // Dynamic key-value pairs

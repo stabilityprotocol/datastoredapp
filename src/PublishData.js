@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import { randomBytes, createCipheriv } from "crypto-browserify";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import { contractABI } from "./contracts/contractABI"; // Import the ABI from the new file
-import logo from "./components/logo.jpg"; // Import the logo
-import InfoBox from "./components/InfoBox/InfoBox"; // Import the InfoBox component
+import { useNavigate } from "react-router-dom";
+import { contractABI } from "./contracts/contractABI";
+import logo from "./components/logo.jpg";
+import InfoBox from "./components/InfoBox/InfoBox";
 
-const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS; // Get contract address
-const providerUrl = process.env.REACT_APP_PROVIDER_URL; // Get provider URL
-const privateKey = process.env.REACT_APP_PRIVATE_KEY; // Get private key
-
-console.log(contractAddress);
+const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
+const providerUrl = process.env.REACT_APP_PROVIDER_URL;
+const privateKey = process.env.REACT_APP_PRIVATE_KEY;
 
 async function publishDataToBlockchain(data, secretKey, setId) {
   if (!data || !secretKey) {
@@ -19,7 +17,6 @@ async function publishDataToBlockchain(data, secretKey, setId) {
   }
 
   try {
-    // Convert data to a string before encrypting
     const dataString = JSON.stringify(data);
 
     // Encrypt the data
@@ -29,7 +26,7 @@ async function publishDataToBlockchain(data, secretKey, setId) {
       Buffer.from(secretKey, "hex"),
       iv
     );
-    let encrypted = cipher.update(dataString, "utf8", "hex"); // Encrypt the stringified data
+    let encrypted = cipher.update(dataString, "utf8", "hex");
     encrypted += cipher.final("hex");
     const encryptedData = iv.toString("hex") + encrypted;
 
@@ -42,23 +39,19 @@ async function publishDataToBlockchain(data, secretKey, setId) {
 
     // Send transaction
     const tx = await contract.recordTransaction(id, encryptedData, {
-      maxFeePerGas: ethers.parseUnits("0", "gwei"), // Minimal non-zero gas fees
+      maxFeePerGas: ethers.parseUnits("0", "gwei"),
       maxPriorityFeePerGas: ethers.parseUnits("0", "gwei"),
     });
 
-    // The transaction hash is available here
     const transactionHash = tx.hash;
-    console.log("Transaction Hash:", transactionHash);
 
-    // Wait for the transaction to be mined
     await tx.wait();
 
-    // Store transaction hash in localStorage
     localStorage.setItem("transactionHash", transactionHash);
 
     setId(id);
     alert(`Data published! ID: ${id}`);
-    return id; // Return the ID so it can be used for navigation
+    return id;
   } catch (error) {
     console.error("Error publishing data:", error);
     alert("Error publishing data to the blockchain.");
@@ -68,9 +61,9 @@ async function publishDataToBlockchain(data, secretKey, setId) {
 function PublishData({ data: propData, secretKey: propSecretKey, setId }) {
   const [data, setData] = useState(propData);
   const [secretKey, setSecretKey] = useState(propSecretKey);
-  const [isPublishing, setIsPublishing] = useState(false); // Track loading state
-  const [dotCount, setDotCount] = useState(0); // Track the number of dots for animation
-  const navigate = useNavigate(); // For navigation to step 4
+  const [isPublishing, setIsPublishing] = useState(false);
+  const [dotCount, setDotCount] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!propData) {
@@ -88,19 +81,19 @@ function PublishData({ data: propData, secretKey: propSecretKey, setId }) {
     let interval;
     if (isPublishing) {
       interval = setInterval(() => {
-        setDotCount((prev) => (prev + 1) % 4); // Cycle through 0 to 3 dots
-      }, 500); // Change dot count every 500ms
+        setDotCount((prev) => (prev + 1) % 4);
+      }, 500);
     } else {
-      clearInterval(interval); // Clear interval when not publishing
+      clearInterval(interval);
     }
-    return () => clearInterval(interval); // Cleanup on unmount
+    return () => clearInterval(interval);
   }, [isPublishing]);
 
   const handlePublish = async () => {
-    setIsPublishing(true); // Set loading state to true
+    setIsPublishing(true);
     await publishDataToBlockchain(data, secretKey, setId);
-    setIsPublishing(false); // Set loading state to false once done
-    navigate("/retrieve"); // Navigate to Step 4 after publishing
+    setIsPublishing(false);
+    navigate("/retrieve");
   };
 
   return (

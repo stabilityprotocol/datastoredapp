@@ -2,6 +2,8 @@
 
 DataStore DApp is a decentralized application built using React that allows users to securely store and retrieve data on the blockchain. This project leverages Solidity smart contracts and web3.js/ethers.js to interact with Stability.
 
+A live version of this site is available [here](https://stabilityprotocol.github.io/datastoredapp/).
+
 ## Features
 
 - **Generate Secrets**: Securely create and manage secrets that can be stored on the Stability blockchain.

@@ -2,7 +2,7 @@
   "name": "datastoreapp",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stabilityprotocol.github.io/data-store-app",
+  "homepage": "https://stabilityprotocol.github.io/datastoredapp",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { contractABI } from "./contracts/contractABI";
 import logo from "./components/logo.jpg";
 import InfoBox from "./components/InfoBox/InfoBox";
-
-const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
-const providerUrl = process.env.REACT_APP_PROVIDER_URL;
+import { config } from "./config";
 
 async function retrieveDataFromBlockchain(id, secretKey) {
   if (!id || !secretKey) {
@@ -17,9 +15,9 @@ async function retrieveDataFromBlockchain(id, secretKey) {
 
   try {
     // Connect to blockchain
-    const provider = new ethers.JsonRpcProvider(providerUrl);
+    const provider = new ethers.JsonRpcProvider(config.providerUrl);
     const contract = new ethers.Contract(
-      contractAddress,
+      config.contractAddress,
       contractABI,
       provider
     );

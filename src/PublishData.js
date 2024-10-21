@@ -5,10 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { contractABI } from "./contracts/contractABI";
 import logo from "./components/logo.jpg";
 import InfoBox from "./components/InfoBox/InfoBox";
-
-const contractAddress = process.env.REACT_APP_CONTRACT_ADDRESS;
-const providerUrl = process.env.REACT_APP_PROVIDER_URL;
-const privateKey = process.env.REACT_APP_PRIVATE_KEY;
+import { config } from "./config";
 
 async function publishDataToBlockchain(data, secretKey, setId) {
   if (!data || !secretKey) {
@@ -33,9 +30,9 @@ async function publishDataToBlockchain(data, secretKey, setId) {
     const id = Math.floor(Math.random() * (9999999999 - 2 + 1)) + 2;
 
     // Connect to blockchain
-    const provider = new ethers.JsonRpcProvider(providerUrl);
-    const wallet = new ethers.Wallet(privateKey, provider);
-    const contract = new ethers.Contract(contractAddress, contractABI, wallet);
+    const provider = new ethers.JsonRpcProvider(config.providerUrl);
+    const wallet = new ethers.Wallet(config.privateKey, provider);
+    const contract = new ethers.Contract(config.contractAddress, contractABI, wallet);
 
     // Send transaction
     const tx = await contract.recordTransaction(id, encryptedData, {
